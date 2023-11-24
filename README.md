@@ -1,6 +1,5 @@
-# Tarea larga - Spring
+# Proyecto - Implementación de FRONT en REACT [ensaladas]
 - Israel Hernández Dorantes - 318206604
-- Rubén Acosta Arzate - 317205776
 
 ## Descripción del Proyecto:
 

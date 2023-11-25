@@ -1,0 +1,18 @@
+.primera-receta,
+.segunda-receta {
+    width: 50%;
+    transition: transform .3s;
+}
+
+.primera-receta:hover,
+.segunda-receta:hover {
+    transform: scale(1.1);
+}
+
+.primera-receta{
+    background-color: #F4C774;
+}
+
+.segunda-receta{
+    background-color: #B1E1B7;
+}

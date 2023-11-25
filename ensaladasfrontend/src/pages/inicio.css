@@ -1,0 +1,28 @@
+.boton-menu {
+    padding: 50px;
+    transition: transform .3s;
+}
+
+.boton-menu:hover {
+    transform: scale(1.1);
+}
+
+.boton-menu a {
+    font-size: 20px;
+}
+
+.boton-menu-1 {
+    background-color: #2B50AA;
+}
+
+.boton-menu-2 {
+    background-color: #2e8b57;
+}
+
+.boton-menu-3 {
+    background-color: #c7ae46;
+}
+
+.boton-menu-4 {
+    background-color: #C8C5C0;
+}

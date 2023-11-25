@@ -1,9 +1,12 @@
 package fciencias.unam.inventario.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +19,7 @@ import fciencias.unam.inventario.demo.repository.UsuarioRepository;
 import jakarta.validation.Valid;
 
 @Controller
+@CrossOrigin // Para que las solicitudes se realicen desde dominios diferentes al del la carpeta 'inventario'
 @RequestMapping("/usuario")
 public class UsuarioController {
     
@@ -24,10 +28,10 @@ public class UsuarioController {
 
     // READ
     @GetMapping("/")
-    public String index(Model model) {
+    public ResponseEntity<List<Usuario>> index(Model model) {
         List<Usuario> usuarios = repo.findAll();
         model.addAttribute("usuarios", usuarios);
-        return "usuario/index";
+       return new ResponseEntity<>(usuarios, HttpStatus.OK);
     }
 
     // CREATE

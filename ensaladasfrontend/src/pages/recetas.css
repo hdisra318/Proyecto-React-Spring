@@ -1,0 +1,29 @@
+.receta-ingredientes{
+    margin-left: 15%;
+    margin-bottom: 50px;
+}
+
+.listado-ingredientes li {
+    margin-top: 10px;
+}
+
+.separacion {
+    margin: 0 auto;
+    height: 3px;
+    width: 80%;
+    background-color: gray;
+}
+
+.receta-pasos {
+    margin: 0 auto;
+    max-width: 70%;
+}
+
+.receta-imagen {
+    display: flex;
+    justify-content: center;
+}
+
+.receta-boton {
+    margin-right: 15%;
+}

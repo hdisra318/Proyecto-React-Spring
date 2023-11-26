@@ -7,10 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
@@ -35,22 +37,23 @@ public class UsuarioController {
     }
 
     // CREATE
-    @GetMapping("/formularioAgregarUsuario")
-    public String agregarUsuario(Model model) {
-        model.addAttribute("usuario", new Usuario());
-        return "usuario/formularioAgregarUsuario";
-    }
+    // @GetMapping("/formularioAgregarUsuario")
+    // public String agregarUsuario(Model model) {
+    //     model.addAttribute("usuario", new Usuario());
+    //     return "usuario/formularioAgregarUsuario";
+    // }
 
     @PostMapping("/formularioAgregarUsuario")
-    public String procesandoAgregarUsuario(@Valid @ModelAttribute Usuario usuario, BindingResult result) {
+    public ResponseEntity<?> procesandoAgregarUsuario(@RequestBody Usuario nuevoUsuario, BindingResult result) {
 
-        System.out.println(usuario);
+        System.out.println(nuevoUsuario);
         if (result.hasErrors()) {
-            return "usuario/formularioAgregarUsuario";
+            System.out.println("Ocurrio un error");
         }
+        Usuario usuario = repo.save(nuevoUsuario);
+        System.out.println(usuario);
+        return new ResponseEntity<>(usuario, HttpStatus.CREATED);
 
-        repo.save(usuario);
-        return "redirect:/usuario/";
     }
 
     // UPDATE
@@ -87,10 +90,10 @@ public class UsuarioController {
     }
 
     // DELETE
-    @GetMapping("/eliminarUsuario/{id}")
-    public String eliminarUsuario(@PathVariable long id) {
+    @DeleteMapping("/eliminarUsuario/{id}")
+    public ResponseEntity<String> eliminarUsuario(@PathVariable long id) {
         repo.deleteById(id);
-        return "redirect:/usuario/";
+        return ResponseEntity.ok("Usuario eliminado exitosamente");
     }
 
 }

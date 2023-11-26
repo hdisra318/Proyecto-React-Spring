@@ -1,7 +1,10 @@
 import Header from "../components/Header";
 import { useState } from "react";
+import { Navigate } from 'react-router-dom';
 
 export default function FormularioAgregarUsuario() {
+
+    const [redirect, setRedirect] = useState(false);
 
     // Estado para almacenar los datos del nuevo usuario
     const [usuario, setUsuario] = useState({
@@ -17,7 +20,7 @@ export default function FormularioAgregarUsuario() {
         setUsuario({ ...usuario, [name]: value });
     };
 
-    const handleClick=(e)=>{
+    const handleClick = (e) => {
         e.preventDefault();
         fetch("http://localhost:8080/usuario/formularioAgregarUsuario",{
           method:"POST",
@@ -26,19 +29,24 @@ export default function FormularioAgregarUsuario() {
     
       }).then(()=>{
         console.log("New User added")
+        setRedirect(true);
       })
+    };
+
+    if (redirect) {
+        return <Navigate to="/usuario" />;
     }
 
     return (
         <>
             <Header user="Administrador" />
 
-            <main class="pt-4 pb-4">
-                <h1 class="text-center">Escribe los datos del nuevo usuario</h1>
+            <main className="pt-4 pb-4">
+                <h1 className="text-center">Escribe los datos del nuevo usuario</h1>
 
-                <form onSubmit={handleClick} method="POST" class="mx-auto p-5 w-50">
-                    <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre</label>
+                <form onSubmit={handleClick} method="POST" className="mx-auto p-5 w-50">
+                    <div className="mb-3">
+                        <label htmlFor="nombre" className="form-label">Nombre</label>
                         <input
                             type="text"
                             className="form-control"
@@ -50,8 +58,8 @@ export default function FormularioAgregarUsuario() {
                         />
                     </div>
 
-                    <div class="mb-3">
-                        <label for="curp" class="form-label">CURP</label>
+                    <div className="mb-3">
+                        <label htmlFor="curp" className="form-label">CURP</label>
                         <input
                             type="text"
                             className="form-control"
@@ -63,8 +71,8 @@ export default function FormularioAgregarUsuario() {
                         />
                     </div>
 
-                    <div class="mb-3">
-                        <label for="aPaterno" class="form-label">Apellido paterno</label>
+                    <div className="mb-3">
+                        <label htmlFor="aPaterno" className="form-label">Apellido paterno</label>
                         <input
                             type="text"
                             className="form-control"
@@ -76,8 +84,8 @@ export default function FormularioAgregarUsuario() {
                         />
                     </div>
 
-                    <div class="mb-3">
-                        <label for="aMaterno" class="form-label">Apellido materno</label>
+                    <div className="mb-3">
+                        <label htmlFor="aMaterno" className="form-label">Apellido materno</label>
                         <input
                             type="text"
                             className="form-control"
@@ -89,8 +97,8 @@ export default function FormularioAgregarUsuario() {
                         />
                     </div>
 
-                    <div class="mb-3">
-                        <label for="saldo" class="form-label">Saldo</label>
+                    <div className="mb-3">
+                        <label htmlFor="saldo" className="form-label">Saldo</label>
                         <input
                             type="number"
                             className="form-control"
@@ -102,8 +110,8 @@ export default function FormularioAgregarUsuario() {
                         />
                     </div>
                     
-                    <div class="d-flex justify-content-end mt-5">
-                        <button type="submit" class="btn btn-success">Registrar</button>
+                    <div className="d-flex justify-content-end mt-5">
+                        <button type="submit" className="btn btn-success">Registrar</button>
                     </div>
 
                 </form>

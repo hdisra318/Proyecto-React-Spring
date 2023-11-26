@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import { Link } from "react-router-dom";
 
 import "./usuario.css";
+import EliminarUsuario from "../components/EliminarUsuario";
 
 export default function Usuario() {
   const [usuarios, setUsuarios] = useState([]);
@@ -47,18 +48,13 @@ export default function Usuario() {
                   <td>
                     <Link
                       className="btn btn-primary"
-                      to="formularioEditarUsuario"
+                      to={`/formularioEditarUsuario/${usuario.id_usuario}`}
                     >
                       Editar usuario
                     </Link>
                   </td>
                   <td>
-                  <Link
-                      className="btn btn-danger"
-                      to="formularioAgregarUsuario"
-                    >
-                      Eliminar usuario
-                    </Link>
+                    <EliminarUsuario id_usuario={usuario.id_usuario} />
                   </td>
                 </tr>
             ))}

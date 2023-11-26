@@ -45,7 +45,7 @@ const router = createBrowserRouter([
     element: <FormularioAgregarUsuario />
   },
   {
-    path: "/usuario/formularioEditarUsuario",
+    path: "/usuario/formularioEditarUsuario/:id_usuario",
     element: <FormularioEditarUsuario />
   }
 ])

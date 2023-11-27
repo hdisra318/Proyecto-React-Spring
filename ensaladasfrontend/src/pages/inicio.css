@@ -21,8 +21,38 @@
 
 .boton-menu-3 {
     background-color: #c7ae46;
+    padding: 60px;
 }
 
 .boton-menu-4 {
     background-color: #C8C5C0;
+    padding: 60px;
+}
+
+.boton-menu-receta-1,
+.boton-menu-receta-2,
+.boton-menu-receta-3 {
+    padding: 60px;
+}
+
+.contenedor-menu {
+    max-width: 100%;
+}
+
+table{
+    border-bottom:lightgrey  1px solid;
+    border-left: lightgrey 1px solid;
+    border-right: lightgray 1px solid;
+}
+
+img{
+    margin-left: 35%;
+    margin-right: 35%;
+} 
+
+hr{
+    height: 5px;
+    background-color: black;
+    margin-left: 15%;
+    margin-right: 15%;
 }

@@ -1,5 +1,5 @@
 import Header from "../components/Header";
-import Ensalada from "./Ensalada";
+import Ensalada from "../components/Ensalada";
 
 import './menu.css';
 
@@ -23,7 +23,7 @@ export default function Menu() {
                 </div>
 
                 {/* Ensalada 2*/}
-                <div class="segunda-receta container rounded mt-5 p-4">
+                <div className="segunda-receta container rounded mt-5 p-4">
                     <Ensalada ensalada="Ensalda Rusa"
                         costo={80}
                         imagen="./img/ensalada_rusa.jpeg"
@@ -33,7 +33,7 @@ export default function Menu() {
                 </div>
 
                 {/* Ensalada 3*/}
-                <div class="primera-receta container rounded mt-5 p-4">
+                <div className="primera-receta container rounded mt-5 p-4">
                     <Ensalada ensalada="Ensalda Kartoffelsalat"
                         costo={120}
                         imagen="./img/ensalada_Kartoffelsalat.jpeg"

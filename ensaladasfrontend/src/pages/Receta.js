@@ -1,12 +1,11 @@
 import Header from "../components/Header";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import './recetas.css';
 
 export function Receta1() {
 
     return (
-        <>
+    <>
         <h1>Receta: Ensalada Cesar</h1>
 
         <div className="mt-5 receta-ingredientes">
@@ -43,7 +42,7 @@ export function Receta1() {
         <div className="receta-imagen mt-5">
             <img className="rounded w-50" src="./img/ensalada_cesar.jpeg" alt="imagen de la ensalada cesar" />
         </div>
-      </>
+    </>
     );
 }
 
@@ -53,10 +52,10 @@ export function Receta2() {
         <>
             <h1>Receta: Ensalada Rusa</h1>
 
-            <div class="mt-5 receta-ingredientes">
-            <h2 class="mb-4">Ingredientes</h2>
+            <div className="mt-5 receta-ingredientes">
+            <h2 className="mb-4">Ingredientes</h2>
 
-            <ul class="listado-ingredientes">
+            <ul className="listado-ingredientes">
                 <li>4 papas medianas </li>
                 <li>2 zanahorias medianas</li>
                 <li>1 taza de chicharos frescos</li>
@@ -71,10 +70,10 @@ export function Receta2() {
             </ul>
             </div>
 
-            <div class="separacion"></div>
+            <div className="separacion"></div>
 
-            <div class="receta-pasos mt-5">
-            <h2 class="mb-4">Pasos</h2>
+            <div className="receta-pasos mt-5">
+            <h2 className="mb-4">Pasos</h2>
             <p>
                 Cocine las papas y las zanahorias en agua hirviendo con sal en una cacerola grande a fuego medio alto durante 10 minutos o hasta que estén tiernas cuando las pinche con un tenedor. Agregue los chícharos cuando falten 5 minutos para que estén listas. Escurra bien y enfríe levemente.
             </p>
@@ -86,8 +85,8 @@ export function Receta2() {
             </p>
             </div>
 
-            <div class="receta-imagen mt-5">
-                <img class="rounded w-50" src="./img/ensalada_rusa.jpeg" 
+            <div className="receta-imagen mt-5">
+                <img className="rounded w-50" src="./img/ensalada_rusa.jpeg" 
                 alt="imagen de la ensalada rusa" />
             </div>
         </>
@@ -100,10 +99,10 @@ export function Receta3() {
         <>
             <h1>Receta: Ensalada Kartoffelsalat</h1>
 
-            <div class="mt-5 receta-ingredientes">
-            <h2 class="mb-4">Ingredientes</h2>
+            <div className="mt-5 receta-ingredientes">
+            <h2 className="mb-4">Ingredientes</h2>
 
-            <ul class="listado-ingredientes">
+            <ul className="listado-ingredientes">
                 <li>1kg de papas</li>
                 <li>50g de pepinillos</li>
                 <li>8 salchichas alemanas</li>
@@ -118,10 +117,10 @@ export function Receta3() {
             </ul>
             </div>
 
-            <div class="separacion"></div>
+            <div className="separacion"></div>
 
-            <div class="receta-pasos mt-5">
-            <h2 class="mb-4">Pasos</h2>
+            <div className="receta-pasos mt-5">
+            <h2 className="mb-4">Pasos</h2>
             <p>
                 Lavamos la lechuga, secamos y reservamos.
             </p>
@@ -136,8 +135,8 @@ export function Receta3() {
             </p>
             </div>
 
-            <div class="receta-imagen mt-5">
-                <img class="rounded w-50" src="/sbadmin/img/ensalada_Kartoffelsalat.jpeg" 
+            <div className="receta-imagen mt-5">
+                <img className="rounded w-50" src="./img/ensalada_Kartoffelsalat.jpeg" 
                 alt="imagen de la ensalada Kartoffelsalat" />
             </div>
         </>
@@ -151,9 +150,9 @@ export default function Receta({numero}) {
         <>
             <Header user="Staff" />
 
-            <main class="p-4">
+            <main className="p-4">
                 
-                {numero == 1 ? <Receta1 /> : (numero == 2 ? <Receta2 /> : <Receta3 />)}
+                {numero === 1 ? <Receta1 /> : (numero === 2 ? <Receta2 /> : <Receta3 />)}
 
             </main>
         </>

@@ -13,7 +13,7 @@ export default function Inicio() {
 
             <h2 className="text-center">¿A donde quieres ir?</h2>
 
-            <div className="d-flex justify-content-center bg-dark bg-gradient m-5 rounded p-5">
+            <div className="contenedor-menu d-flex justify-content-center bg-dark bg-gradient m-5 rounded p-5">
             <div className="boton-menu boton-menu-1 bg-gradient m-4 me-5 rounded">
                 <Link to="/menu" className="text-white btn">Menú de Ensaladas</Link>
             </div>

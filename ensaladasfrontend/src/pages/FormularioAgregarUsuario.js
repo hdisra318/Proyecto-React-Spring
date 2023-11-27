@@ -23,14 +23,14 @@ export default function FormularioAgregarUsuario() {
     const handleClick = (e) => {
         e.preventDefault();
         fetch("http://localhost:8080/usuario/formularioAgregarUsuario",{
-          method:"POST",
-          headers:{"Content-Type":"application/json"},
-          body:JSON.stringify(usuario)
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify(usuario)
     
-      }).then(()=>{
-        console.log("New User added")
-        setRedirect(true);
-      })
+        }).then(()=>{
+            console.log("New User added")
+            setRedirect(true);
+        })
     };
 
     if (redirect) {

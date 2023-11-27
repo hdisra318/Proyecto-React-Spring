@@ -1,13 +1,17 @@
 package fciencias.unam.inventario.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 import java.util.Arrays;
@@ -17,6 +21,7 @@ import fciencias.unam.inventario.demo.repository.ProductoRepository;
 import jakarta.validation.Valid;
 
 @Controller
+@CrossOrigin(origins = "http://localhost:3000") // Para que las solicitudes se realicen desde dominios diferentes al del la carpeta 'producto'
 @RequestMapping("/producto")
 public class ProductoController {
 
@@ -30,25 +35,25 @@ public class ProductoController {
     }
 
     // CREATE
-    @GetMapping("/formularioAgregarIngrediente")
-    public String agregarIngrediente(Model model) {
-        model.addAttribute("producto", new Producto());
-        return "producto/formularioAgregarIngrediente";
-    }
+    // @GetMapping("/formularioAgregarIngrediente")
+    // public String agregarIngrediente(Model model) {
+    //     model.addAttribute("producto", new Producto());
+    //     return "producto/formularioAgregarIngrediente";
+    // }
 
     @PostMapping("/formularioAgregarIngrediente")
-    public String procesandoAgregarIngrediente(@Valid @ModelAttribute Producto ingrediente, BindingResult result) {
+    public ResponseEntity<?> procesandoAgregarIngrediente(@RequestBody Producto nuevoIngrediente, BindingResult result) {
 
-        System.out.println(ingrediente);
+        System.out.println(nuevoIngrediente);
 
         if (result.hasErrors()) {
             System.out.println(result.getAllErrors());
-            return "producto/formularioAgregarIngrediente";
         }
 
-        repo.save(ingrediente);
-        return "redirect:/inventario/";
-        
+        Producto ingrediente = repo.save(nuevoIngrediente);
+       
+        return new ResponseEntity<>(ingrediente, HttpStatus.CREATED);
+
     }
 
     @GetMapping("/formularioEditarIngrediente")
@@ -107,8 +112,8 @@ public class ProductoController {
 
     // DELETE
     @GetMapping("/eliminarIngrediente/{id}")
-    public String eliminarIngrediente(@PathVariable long id) {
+    public ResponseEntity<String> eliminarIngrediente(@PathVariable long id) {
         repo.deleteById(id);
-        return "redirect:/inventario/";
+        return ResponseEntity.ok("Ingrediente eliminado exitosamente");
     }   
 }

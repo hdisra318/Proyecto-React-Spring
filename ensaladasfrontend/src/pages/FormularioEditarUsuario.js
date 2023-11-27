@@ -1,9 +1,16 @@
 import { useState, useEffect } from "react";
+import { Navigate, useParams } from 'react-router-dom';
 
 import Header from "../components/Header";
 
-export default function FormularioEditarUsuario({id_usuario}) {
+export default function FormularioEditarUsuario() {
 
+    const { id_usuario } = useParams();
+    console.log(id_usuario)
+
+    const [redirect, setRedirect] = useState(false);
+
+    // Usuario a actualizar
     const [usuario, setUsuario] = useState({
         nombre: '',
         curp: '',
@@ -11,25 +18,6 @@ export default function FormularioEditarUsuario({id_usuario}) {
         aMaterno: '',
         saldo: 0,
       });
-
-    
-    useEffect(() => {
-        // Realiza una solicitud para obtener los datos del usuario por su ID
-        const obtenerUsuario = async () => {
-          try {
-            const response = await fetch(`http://localhost:8080/usuario/${id_usuario}`);
-            const data = await response.json();
-    
-            // Actualiza el estado con los datos del usuario
-            setUsuario(data);
-            } catch (error) {
-                console.error('Error al obtener los datos del usuario:', error);
-            }
-        };
-    
-        obtenerUsuario();
-    }, [id_usuario]);
-
 
     const handleChange = (e) => {
         // Maneja los cambios en los campos del formulario
@@ -39,27 +27,23 @@ export default function FormularioEditarUsuario({id_usuario}) {
     
     const handleSubmit = async (e) => {
         e.preventDefault();
+        fetch(`http://localhost:8080/usuario/formularioEditarUsuario/${id_usuario}`,{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify(usuario)
     
-        try {
-          // Realiza una solicitud PUT al backend para actualizar el usuario
-          const response = await fetch(`http://localhost:8080/usuario/${id_usuario}`, {
-            method: 'PUT',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(usuario),
-          });
+        }).then(()=>{
+            console.log("Usuario actualizado")
+            setRedirect(true);
+        })
     
-          if (response.ok) {
-            // Si la actualización es exitosa, puedes realizar alguna acción adicional
-            console.log('Usuario actualizado exitosamente');
-          } else {
-            console.error('Error al actualizar el usuario');
-          }
-        } catch (error) {
-          console.error('Error de red:', error);
-        }
     };
+
+    
+
+    if (redirect) {
+        return <Navigate to="/usuario" />;
+    }
 
     return (
         <>

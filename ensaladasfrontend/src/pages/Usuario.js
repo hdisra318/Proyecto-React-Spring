@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import { Link } from "react-router-dom";
 
 import "./usuario.css";
-import EliminarUsuario from "../components/EliminarUsuario";
+import BotonEliminar from "../components/BotonEliminar";
 
 export default function Usuario() {
   const [usuarios, setUsuarios] = useState([]);
@@ -38,7 +38,7 @@ export default function Usuario() {
               </tr>
             </thead>
             <tbody>
-            {usuarios.map((usuario) => (
+              {usuarios.map((usuario) => (
                 <tr>
                   <th scope="row">{usuario.nombre}</th>
                   <td>{usuario.curp}</td>
@@ -54,10 +54,10 @@ export default function Usuario() {
                     </Link>
                   </td>
                   <td>
-                    <EliminarUsuario id_usuario={usuario.id_usuario} />
+                    <BotonEliminar id={usuario.id_usuario} tipo="usuario" />
                   </td>
                 </tr>
-            ))}
+              ))}
             </tbody>
           </table>
         </div>

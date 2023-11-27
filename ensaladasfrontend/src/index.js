@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Header from './components/Header';
 import Inicio from './pages/Inicio';
-import { Router, Route, Routes, RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Menu from './pages/Menu';
 import Recetas from './pages/Recetas';
 import Receta from './pages/Receta';
 import Usuario from './pages/Usuario';
 import FormularioAgregarUsuario from './pages/FormularioAgregarUsuario';
 import FormularioEditarUsuario from './pages/FormularioEditarUsuario';
+import Inventario from "./pages/Inventario";
+import FormularioAgregarIngrediente from './pages/FormularioAgregarIngrediente';
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,14 @@ const router = createBrowserRouter([
   {
     path: "/usuario/formularioEditarUsuario/:id_usuario",
     element: <FormularioEditarUsuario />
+  },
+  {
+    path: "/inventario",
+    element: <Inventario />
+  },
+  {
+    path: "/producto/formularioAgregarIngrediente",
+    element: <FormularioAgregarIngrediente />
   }
 ])
 

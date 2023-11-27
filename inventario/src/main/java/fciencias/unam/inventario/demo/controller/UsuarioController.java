@@ -21,7 +21,7 @@ import fciencias.unam.inventario.demo.repository.UsuarioRepository;
 import jakarta.validation.Valid;
 
 @Controller
-@CrossOrigin // Para que las solicitudes se realicen desde dominios diferentes al del la carpeta 'inventario'
+@CrossOrigin(origins = "http://localhost:3000") // Para que las solicitudes se realicen desde dominios diferentes al del la carpeta 'inventario'
 @RequestMapping("/usuario")
 public class UsuarioController {
     

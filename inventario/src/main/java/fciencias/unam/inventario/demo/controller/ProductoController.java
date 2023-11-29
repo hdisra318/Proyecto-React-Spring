@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,12 +36,6 @@ public class ProductoController {
     }
 
     // CREATE
-    // @GetMapping("/formularioAgregarIngrediente")
-    // public String agregarIngrediente(Model model) {
-    //     model.addAttribute("producto", new Producto());
-    //     return "producto/formularioAgregarIngrediente";
-    // }
-
     @PostMapping("/formularioAgregarIngrediente")
     public ResponseEntity<?> procesandoAgregarIngrediente(@RequestBody Producto nuevoIngrediente, BindingResult result) {
 
@@ -63,7 +58,7 @@ public class ProductoController {
 
     // UPDATE
     @GetMapping("/formularioEditarIngrediente/{id}")
-    public String editarIngrediente(@PathVariable long id, Model model) {
+    public ResponseEntity<Producto> editarIngrediente(@PathVariable long id, Model model) {
 
         // Obteniedo usuario
         Producto ingrediente = repo.findById(id).orElse(null);
@@ -72,11 +67,11 @@ public class ProductoController {
         model.addAttribute("producto", ingrediente);
         model.addAttribute("id", id);
 
-        return "producto/formularioEditarIngrediente";
+        return new ResponseEntity<>(ingrediente, HttpStatus.OK);
     }
 
     @PostMapping("/formularioEditarIngrediente/{id}")
-    public String procesandoEditarIngrediente(@PathVariable long id, @Valid @ModelAttribute Producto ingrediente, BindingResult result) {
+    public String procesandoEditarIngrediente(@PathVariable long id, @Valid @RequestBody Producto ingrediente, BindingResult result) {
 
         System.out.println(ingrediente);
         if (result.hasErrors()) {
@@ -111,7 +106,7 @@ public class ProductoController {
     }
 
     // DELETE
-    @GetMapping("/eliminarIngrediente/{id}")
+    @DeleteMapping("/eliminarIngrediente/{id}")
     public ResponseEntity<String> eliminarIngrediente(@PathVariable long id) {
         repo.deleteById(id);
         return ResponseEntity.ok("Ingrediente eliminado exitosamente");

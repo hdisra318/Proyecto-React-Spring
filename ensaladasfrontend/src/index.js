@@ -11,6 +11,7 @@ import FormularioAgregarUsuario from './pages/FormularioAgregarUsuario';
 import FormularioEditarUsuario from './pages/FormularioEditarUsuario';
 import Inventario from "./pages/Inventario";
 import FormularioAgregarIngrediente from './pages/FormularioAgregarIngrediente';
+import FormularioEditarIngrediente from './pages/FormularioEditarIngrediente';
 
 const router = createBrowserRouter([
   {
@@ -56,7 +57,11 @@ const router = createBrowserRouter([
   {
     path: "/producto/formularioAgregarIngrediente",
     element: <FormularioAgregarIngrediente />
-  }
+  },
+  {
+    path: "/producto/formularioEditarIngrediente/:id_producto",
+    element: <FormularioEditarIngrediente />
+  },
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

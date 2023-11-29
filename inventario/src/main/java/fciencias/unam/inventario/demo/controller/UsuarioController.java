@@ -37,14 +37,8 @@ public class UsuarioController {
     }
 
     // CREATE
-    // @GetMapping("/formularioAgregarUsuario")
-    // public String agregarUsuario(Model model) {
-    //     model.addAttribute("usuario", new Usuario());
-    //     return "usuario/formularioAgregarUsuario";
-    // }
-
     @PostMapping("/formularioAgregarUsuario")
-    public ResponseEntity<?> procesandoAgregarUsuario(@RequestBody Usuario nuevoUsuario, BindingResult result) {
+    public ResponseEntity<Usuario> procesandoAgregarUsuario(@RequestBody Usuario nuevoUsuario, BindingResult result) {
 
         System.out.println(nuevoUsuario);
         if (result.hasErrors()) {
@@ -58,7 +52,7 @@ public class UsuarioController {
 
     // UPDATE
     @GetMapping("/formularioEditarUsuario/{id}")
-    public String editarUsuario(@PathVariable long id, Model model) {
+    public ResponseEntity<Usuario> editarUsuario(@PathVariable long id, Model model) {
 
         // Obteniedo usuario
         Usuario usuario = repo.findById(id).orElse(null);
@@ -66,15 +60,15 @@ public class UsuarioController {
         model.addAttribute("usuario", usuario);
         model.addAttribute("id", id);
 
-        return "usuario/formularioEditarUsuario";
+        return new ResponseEntity<>(usuario, HttpStatus.OK);
     }
 
     @PostMapping("/formularioEditarUsuario/{id}")
-    public String procesandoEditarUsuario(@PathVariable long id, @Valid @ModelAttribute Usuario usuario, BindingResult result) {
+    public String procesandoEditarUsuario(@PathVariable long id, @Valid @RequestBody Usuario usuario, BindingResult result) {
 
-        System.out.println(usuario);
+        System.out.println(usuario.aPaterno);
         if (result.hasErrors()) {
-            return "usuario/formularioEditarUsuario";
+            System.out.println("Ocurrio un error al actualizar la informacion");
         }
 
         // Actualizando los datos

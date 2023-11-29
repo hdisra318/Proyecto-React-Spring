@@ -51,7 +51,7 @@ export default function Inventario() {
                   <td>{producto.tipoProducto}</td>
                   <td>{producto.medida}</td>
                   <td>{producto.stock}</td>
-                  <td>{producto.costo}</td>
+                  <td>${producto.costo}</td>
                   <td>{producto.fechaAdquision}</td>
                   <td>{producto.fechaCaducidad}</td>
                   <td>{producto.nombreProveedor}</td>
@@ -60,7 +60,7 @@ export default function Inventario() {
                   <td>
                     <Link
                       className="btn btn-primary"
-                      to={`/formularioEditarIngrediente/${producto.idProducto}`}
+                      to={`/producto/formularioEditarIngrediente/${producto.idProducto}`}
                     >
                       Editar Ingrediente
                     </Link>

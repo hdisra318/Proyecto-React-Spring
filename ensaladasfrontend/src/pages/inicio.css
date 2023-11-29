@@ -56,3 +56,15 @@ hr{
     margin-left: 15%;
     margin-right: 15%;
 }
+
+@media screen and (max-width: 1250px) {
+    .contenedor-menu {
+        flex-direction: column;
+    }
+    .boton-menu {
+        text-align: center;
+        width: 90%;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+}

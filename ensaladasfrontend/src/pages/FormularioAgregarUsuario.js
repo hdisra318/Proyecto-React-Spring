@@ -28,7 +28,7 @@ export default function FormularioAgregarUsuario() {
             body:JSON.stringify(usuario)
     
         }).then(()=>{
-            console.log("New User added")
+            console.log("Usuario agregado")
             setRedirect(true);
         })
     };

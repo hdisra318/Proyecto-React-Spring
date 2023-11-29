@@ -21,7 +21,7 @@ export default function BotonEliminar({id, tipo}) {
           if (response.ok) {
             // Si la eliminación es exitosa, actualiza el estado o realiza alguna acción adicional
             console.log("Elemento eliminado");
-            window.location.reload();
+            window.location.reload(); // Recarga la pagina
           } else {
             console.error('Error al eliminar el elemento');
           }

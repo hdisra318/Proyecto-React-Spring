@@ -12,7 +12,7 @@ export default function Recetas() {
 
                 <h2 className="text-center">Escoge una receta a ver</h2>
             
-                <div className="d-flex bg-dark justify-content-center bg-gradient m-5 rounded p-5">
+                <div className="contenedor-menu d-flex bg-dark justify-content-center bg-gradient m-5 rounded p-5">
                     <div className="boton-menu boton-menu-1 boton-menu-receta-1 m-4 me-5 rounded">
                         <Link to="/recetas/receta1" className="text-white btn">Receta 1</Link>
                     </div>

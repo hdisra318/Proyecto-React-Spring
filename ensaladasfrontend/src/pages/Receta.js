@@ -40,7 +40,7 @@ export function Receta1() {
         </div>
 
         <div className="receta-imagen mt-5">
-            <img className="rounded w-50" src="./img/ensalada_cesar.jpeg" alt="imagen de la ensalada cesar" />
+            <img className="rounded w-50" src="/img/ensalada_cesar.jpeg" alt="imagen de la ensalada cesar" />
         </div>
     </>
     );
@@ -86,7 +86,7 @@ export function Receta2() {
             </div>
 
             <div className="receta-imagen mt-5">
-                <img className="rounded w-50" src="./img/ensalada_rusa.jpeg" 
+                <img className="rounded w-50" src="/img/ensalada_rusa.jpeg" 
                 alt="imagen de la ensalada rusa" />
             </div>
         </>
@@ -136,7 +136,7 @@ export function Receta3() {
             </div>
 
             <div className="receta-imagen mt-5">
-                <img className="rounded w-50" src="./img/ensalada_Kartoffelsalat.jpeg" 
+                <img className="rounded w-50" src="/img/ensalada_Kartoffelsalat.jpeg" 
                 alt="imagen de la ensalada Kartoffelsalat" />
             </div>
         </>

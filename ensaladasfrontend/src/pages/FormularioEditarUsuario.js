@@ -5,8 +5,8 @@ import Header from "../components/Header";
 
 export default function FormularioEditarUsuario() {
 
+    // Obteniendo el id del usuario de la ruta
     const { id_usuario } = useParams();
-    console.log(id_usuario)
 
     const [redirect, setRedirect] = useState(false);
 
@@ -19,10 +19,26 @@ export default function FormularioEditarUsuario() {
         saldo: 0,
       });
 
+
+      useEffect(() => {
+        const obtenerDatosUsuario = async () => {
+          try {
+            const response = await fetch(`http://localhost:8080/usuario/formularioEditarUsuario/${id_usuario}`);
+            const data = await response.json();
+            setUsuario(data);
+          } catch (error) {
+            console.error('Error al obtener los datos del usuario', error);
+          }
+        };
+    
+        obtenerDatosUsuario();
+      }, []);
+    
+
     const handleChange = (e) => {
         // Maneja los cambios en los campos del formulario
         const { name, value } = e.target;
-        setUsuario((prevUsuario) => ({ ...prevUsuario, [name]: value }));
+        setUsuario({ ...usuario, [name]: value });
     };
     
     const handleSubmit = async (e) => {
@@ -35,11 +51,10 @@ export default function FormularioEditarUsuario() {
         }).then(()=>{
             console.log("Usuario actualizado")
             setRedirect(true);
-        })
+        }) 
     
     };
 
-    
 
     if (redirect) {
         return <Navigate to="/usuario" />;
@@ -49,12 +64,12 @@ export default function FormularioEditarUsuario() {
         <>
             <Header user="Administrador" />
 
-            <main class="pt-4 pb-4">
-                <h1 class="text-center">Actualiza los datos del usuario</h1>
+            <main className="pt-4 pb-4">
+                <h1 className="text-center">Actualiza los datos del usuario</h1>
 
-                <form  method="POST" class="mx-auto p-5 w-50">
-                    <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre</label>
+                <form onSubmit={handleSubmit} method="POST" className="mx-auto p-5 w-50">
+                    <div className="mb-3">
+                        <label htmlFor="nombre" className="form-label">Nombre</label>
                         <input
                             type="text"
                             className="form-control"
@@ -66,8 +81,8 @@ export default function FormularioEditarUsuario() {
                         />
                     </div>
 
-                    <div class="mb-3">
-                        <label for="curp" class="form-label">CURP</label>
+                    <div className="mb-3">
+                        <label htmlFor="curp" className="form-label">CURP</label>
                         <input
                             type="text"
                             className="form-control"
@@ -79,8 +94,8 @@ export default function FormularioEditarUsuario() {
                         />
                     </div>
 
-                    <div class="mb-3">
-                        <label for="aPaterno" class="form-label">Apellido paterno</label>
+                    <div className="mb-3">
+                        <label htmlFor="aPaterno" className="form-label">Apellido paterno</label>
                         <input
                             type="text"
                             className="form-control"
@@ -92,8 +107,8 @@ export default function FormularioEditarUsuario() {
                         />
                     </div>
 
-                    <div class="mb-3">
-                        <label for="aMaterno" class="form-label">Apellido materno</label>
+                    <div className="mb-3">
+                        <label htmlFor="aMaterno" className="form-label">Apellido materno</label>
                         <input
                             type="text"
                             className="form-control"
@@ -105,8 +120,8 @@ export default function FormularioEditarUsuario() {
                         />
                     </div>
 
-                    <div class="mb-3">
-                        <label for="saldo" class="form-label">Saldo</label>
+                    <div className="mb-3">
+                        <label htmlFor="saldo" className="form-label">Saldo</label>
                         <input
                             type="number"
                             className="form-control"
@@ -118,8 +133,8 @@ export default function FormularioEditarUsuario() {
                         />
                     </div>
                     
-                    <div class="d-flex justify-content-end mt-5">
-                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                    <div className="d-flex justify-content-end mt-5">
+                        <button type="submit" className="btn btn-primary">Actualizar</button>
                     </div>
 
                 </form>

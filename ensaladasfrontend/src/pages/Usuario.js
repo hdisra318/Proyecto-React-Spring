@@ -48,7 +48,7 @@ export default function Usuario() {
                   <td>
                     <Link
                       className="btn btn-primary"
-                      to={`/formularioEditarUsuario/${usuario.id_usuario}`}
+                      to={`formularioEditarUsuario/${usuario.id_usuario}`}
                     >
                       Editar usuario
                     </Link>

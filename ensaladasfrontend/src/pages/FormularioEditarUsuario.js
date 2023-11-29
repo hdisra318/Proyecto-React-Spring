@@ -23,6 +23,7 @@ export default function FormularioEditarUsuario() {
       useEffect(() => {
         const obtenerDatosUsuario = async () => {
           try {
+            // Realizando peticion GET para obtener los datos del usuario con id_usuario al cargar la pagina
             const response = await fetch(`http://localhost:8080/usuario/formularioEditarUsuario/${id_usuario}`);
             const data = await response.json();
             setUsuario(data);

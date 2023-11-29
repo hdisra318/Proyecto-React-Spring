@@ -8,7 +8,6 @@ export default function FormularioEditarIngrediente() {
     // Obteniendo el id del producto de la ruta
     const { id_producto } = useParams();
 
-
     const [redirect, setRedirect] = useState(false);
 
     // Estado para almacenar los datos del nuevo producto
@@ -28,6 +27,7 @@ export default function FormularioEditarIngrediente() {
       useEffect(() => {
         const obtenerDatosUsuario = async () => {
           try {
+            // Realizando peticion GET para obtener los datos del usuario con id_producto al cargar la pagina
             const response = await fetch(`http://localhost:8080/producto/formularioEditarIngrediente/${id_producto}`);
             const data = await response.json();
             setProducto(data);

@@ -24,7 +24,7 @@ export default function Inventario() {
       <Header user="Administrador" />
 
       <main className="pt-4 pb-4">
-        <h1 className="mb-4"> Ingredientes registrados</h1>
+        <h1 className="mb-4">Ingredientes registrados</h1>
 
         <div className="inventario inventario-margen">
           <table className="table">
@@ -78,6 +78,7 @@ export default function Inventario() {
         </div>
 
         <div className="d-flex justify-content-end mt-5 receta-boton pt-5">
+          {/* Crea un enlace de navegación entre las vistas (o componentes) */}
           <Link
             className="btn btn-success ps-4 pe-4"
             to="/producto/formularioAgregarIngrediente"

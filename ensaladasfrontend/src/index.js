@@ -13,6 +13,7 @@ import Inventario from "./pages/Inventario";
 import FormularioAgregarIngrediente from './pages/FormularioAgregarIngrediente';
 import FormularioEditarIngrediente from './pages/FormularioEditarIngrediente';
 
+// Para manejar las rutas con React para que la carga inicial de la aplicación sea más rapida 
 const router = createBrowserRouter([
   {
     path: "/",

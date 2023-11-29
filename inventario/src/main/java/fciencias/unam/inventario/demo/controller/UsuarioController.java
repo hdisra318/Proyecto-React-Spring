@@ -4,12 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,10 +28,10 @@ public class UsuarioController {
 
     // READ
     @GetMapping("/")
-    public ResponseEntity<List<Usuario>> index(Model model) {
+    public ResponseEntity<List<Usuario>> index() {
         List<Usuario> usuarios = repo.findAll();
-        model.addAttribute("usuarios", usuarios);
-       return new ResponseEntity<>(usuarios, HttpStatus.OK);
+        // Regresa una respuesta HTTP con un estado 200 (OK) y un cuerpo que contiene la lista de usuarios
+        return new ResponseEntity<>(usuarios, HttpStatus.OK);
     }
 
     // CREATE
@@ -42,7 +40,7 @@ public class UsuarioController {
 
         System.out.println(nuevoUsuario);
         if (result.hasErrors()) {
-            System.out.println("Ocurrio un error");
+            System.out.println(result.getAllErrors());
         }
         Usuario usuario = repo.save(nuevoUsuario);
         System.out.println(usuario);
@@ -52,23 +50,20 @@ public class UsuarioController {
 
     // UPDATE
     @GetMapping("/formularioEditarUsuario/{id}")
-    public ResponseEntity<Usuario> editarUsuario(@PathVariable long id, Model model) {
+    public ResponseEntity<Usuario> editarUsuario(@PathVariable long id) {
 
         // Obteniedo usuario
         Usuario usuario = repo.findById(id).orElse(null);
-
-        model.addAttribute("usuario", usuario);
-        model.addAttribute("id", id);
 
         return new ResponseEntity<>(usuario, HttpStatus.OK);
     }
 
     @PostMapping("/formularioEditarUsuario/{id}")
-    public String procesandoEditarUsuario(@PathVariable long id, @Valid @RequestBody Usuario usuario, BindingResult result) {
+    public ResponseEntity<Usuario> procesandoEditarUsuario(@PathVariable long id, @Valid @RequestBody Usuario usuario, BindingResult result) {
 
         System.out.println(usuario.aPaterno);
         if (result.hasErrors()) {
-            System.out.println("Ocurrio un error al actualizar la informacion");
+            System.out.println(result.getAllErrors());
         }
 
         // Actualizando los datos
@@ -80,7 +75,7 @@ public class UsuarioController {
         usuarioActual.setSaldo(usuario.getSaldo());
 
         repo.save(usuarioActual);
-        return "redirect:/usuario/";
+        return new ResponseEntity<>(usuario, HttpStatus.CREATED);
     }
 
     // DELETE

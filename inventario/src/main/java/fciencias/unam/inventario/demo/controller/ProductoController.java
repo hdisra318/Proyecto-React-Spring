@@ -46,9 +46,6 @@ public class ProductoController {
 
         // Obteniedo usuario
         Producto ingrediente = repo.findById(id).orElse(null);
-        System.out.println("Ingrediente: ");
-        System.out.println(ingrediente);
-
         return new ResponseEntity<>(ingrediente, HttpStatus.OK);
     }
 

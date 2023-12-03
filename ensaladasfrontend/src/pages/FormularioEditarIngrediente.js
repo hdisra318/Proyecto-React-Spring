@@ -22,22 +22,22 @@ export default function FormularioEditarIngrediente() {
         nombreProveedor: '',
         descripcion: '',
         comentarios: '',
-      });
+    });
 
-      useEffect(() => {
-        const obtenerDatosUsuario = async () => {
-          try {
-            // Realizando peticion GET para obtener los datos del usuario con id_producto al cargar la pagina
-            const response = await fetch(`http://localhost:8080/producto/formularioEditarIngrediente/${id_producto}`);
-            const data = await response.json();
-            setProducto(data);
-          } catch (error) {
-            console.error('Error al obtener los datos del producto', error);
-          }
+    useEffect(() => {
+        const obtenerDatosProducto = async () => {
+            try {
+                // Realizando peticion GET para obtener los datos del producto con id_producto al cargar la pagina
+                const response = await fetch(`http://localhost:8080/producto/formularioEditarIngrediente/${id_producto}`);
+                const data = await response.json();
+                setProducto(data);
+            } catch (error) {
+                console.error('Error al obtener los datos del producto', error);
+            }
         };
     
-        obtenerDatosUsuario();
-      }, []);
+        obtenerDatosProducto();
+    }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;

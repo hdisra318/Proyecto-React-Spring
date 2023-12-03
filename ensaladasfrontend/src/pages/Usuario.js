@@ -8,6 +8,7 @@ import BotonEliminar from "../components/BotonEliminar";
 export default function Usuario() {
   const [usuarios, setUsuarios] = useState([]);
 
+  // Obteniendo los usuarios
   useEffect(() => {
     fetch("http://localhost:8080/usuario/")
       .then((res) => res.json())

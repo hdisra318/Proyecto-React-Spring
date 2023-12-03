@@ -16,7 +16,7 @@ import fciencias.unam.inventario.demo.repository.InventarioRepository;
 
 @Controller
 @RequestMapping("/inventario")
-@CrossOrigin(origins = "http://localhost:3000") // Para que las solicitudes se realicen desde el dominio de la app hecha en react 
+@CrossOrigin(origins = "http://localhost:3000") // Para que las solicitudes se realicen desde el dominio de la app hecha en React 
 public class InventarioController {
 
     @Autowired

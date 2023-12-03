@@ -17,23 +17,27 @@ export default function FormularioEditarUsuario() {
         aPaterno: '',
         aMaterno: '',
         saldo: 0,
-      });
+    });
 
 
-      useEffect(() => {
+    useEffect(() => {
         const obtenerDatosUsuario = async () => {
-          try {
-            // Realizando peticion GET para obtener los datos del usuario con id_usuario al cargar la pagina
-            const response = await fetch(`http://localhost:8080/usuario/formularioEditarUsuario/${id_usuario}`);
-            const data = await response.json();
-            setUsuario(data);
-          } catch (error) {
-            console.error('Error al obtener los datos del usuario', error);
-          }
+            try {
+                // Realizando peticion GET para obtener los datos del usuario con id_usuario al cargar la pagina
+                const response = await fetch(`http://localhost:8080/usuario/formularioEditarUsuario/${id_usuario}`);
+                const data = await response.json();
+                
+                // Eliminando atributos extras
+                let {apaterno, amaterno, ...newData} = data
+                setUsuario(newData);
+
+            } catch (error) {
+                console.error('Error al obtener los datos del usuario', error);
+            }
         };
     
         obtenerDatosUsuario();
-      }, []);
+    }, []);
     
 
     const handleChange = (e) => {
@@ -52,7 +56,7 @@ export default function FormularioEditarUsuario() {
         }).then(()=>{
             console.log("Usuario actualizado")
             setRedirect(true);
-        }) 
+        })
     
     };
 

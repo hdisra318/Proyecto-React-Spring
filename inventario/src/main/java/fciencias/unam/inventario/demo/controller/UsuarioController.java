@@ -19,7 +19,7 @@ import fciencias.unam.inventario.demo.repository.UsuarioRepository;
 import jakarta.validation.Valid;
 
 @Controller
-@CrossOrigin(origins = "http://localhost:3000") // Para que las solicitudes se realicen desde el dominio de la app hecha en react 
+@CrossOrigin(origins = "http://localhost:3000") // Para que las solicitudes se realicen desde el dominio de la app hecha en React 
 @RequestMapping("/usuario")
 public class UsuarioController {
     
@@ -54,14 +54,12 @@ public class UsuarioController {
 
         // Obteniedo usuario
         Usuario usuario = repo.findById(id).orElse(null);
-
         return new ResponseEntity<>(usuario, HttpStatus.OK);
     }
 
     @PostMapping("/formularioEditarUsuario/{id}")
     public ResponseEntity<Usuario> procesandoEditarUsuario(@PathVariable long id, @Valid @RequestBody Usuario usuario, BindingResult result) {
 
-        System.out.println(usuario.aPaterno);
         if (result.hasErrors()) {
             System.out.println(result.getAllErrors());
         }

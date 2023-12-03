@@ -18,7 +18,7 @@ import fciencias.unam.inventario.demo.repository.ProductoRepository;
 import jakarta.validation.Valid;
 
 @Controller
-@CrossOrigin(origins = "http://localhost:3000") // Para que las solicitudes se realicen desde el dominio de la app hecha en react 
+@CrossOrigin(origins = "http://localhost:3000") // Para que las solicitudes se realicen desde el dominio de la app hecha en React 
 @RequestMapping("/producto")
 public class ProductoController {
 
@@ -36,15 +36,9 @@ public class ProductoController {
         }
 
         Producto ingrediente = repo.save(nuevoIngrediente);
-       
         return new ResponseEntity<>(ingrediente, HttpStatus.CREATED);
 
     }
-
-    // @GetMapping("/formularioEditarIngrediente")
-    // public String editarIngrediente() {
-    //     return "producto/formularioEditarIngrediente";
-    // }
 
     // UPDATE
     @GetMapping("/formularioEditarIngrediente/{id}")
@@ -61,7 +55,6 @@ public class ProductoController {
     @PostMapping("/formularioEditarIngrediente/{id}")
     public ResponseEntity<Producto> procesandoEditarIngrediente(@PathVariable long id, @Valid @RequestBody Producto ingrediente, BindingResult result) {
 
-        System.out.println(ingrediente);
         if (result.hasErrors()) {
             System.out.println(result.getAllErrors());
         }

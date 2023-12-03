@@ -18,7 +18,7 @@ export default function FormularioAgregarIngrediente() {
         nombreProveedor: '',
         descripcion: '',
         comentarios: '',
-      });
+    });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -26,7 +26,7 @@ export default function FormularioAgregarIngrediente() {
     };
 
     const handleSubmit = (e) => {
-        console.log(producto)
+
         e.preventDefault();
         fetch("http://localhost:8080/producto/formularioAgregarIngrediente",{
             method:"POST",
@@ -37,7 +37,7 @@ export default function FormularioAgregarIngrediente() {
             console.log("Producto agregado")
             setRedirect(true);
         }).catch((e) => {
-            console.log("Ocurrio un error:"+e)
+            console.log("Ocurrio un error: "+e)
         })
     };
 

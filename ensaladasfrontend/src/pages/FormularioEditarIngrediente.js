@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Navigate, useParams } from 'react-router-dom';
 
 import Header from "../components/Header";
+import BotonCancelar from "../components/BotonCancelar";
 
 export default function FormularioEditarIngrediente() {
 
@@ -206,6 +207,7 @@ export default function FormularioEditarIngrediente() {
                         <button type="submit" className="btn btn-success">Actualizar</button>
                     </div>
 
+                    <BotonCancelar  ruta="/inventario" />
                 </form>
             </main>
         </>

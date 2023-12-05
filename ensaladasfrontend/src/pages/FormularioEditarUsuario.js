@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Navigate, useParams } from 'react-router-dom';
 
 import Header from "../components/Header";
+import BotonCancelar from "../components/BotonCancelar";
 
 export default function FormularioEditarUsuario() {
 
@@ -142,6 +143,7 @@ export default function FormularioEditarUsuario() {
                         <button type="submit" className="btn btn-primary">Actualizar</button>
                     </div>
 
+                    <BotonCancelar  ruta="/usuario" />
                 </form>
             </main>
         </>

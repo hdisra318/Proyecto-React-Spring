@@ -1,5 +1,6 @@
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
+import BotonRegresar from "../components/BotonRegresar";
 
 export default function Recetas() {
 
@@ -23,6 +24,8 @@ export default function Recetas() {
                         <Link to="/recetas/receta3" className="text-white btn">Rectea 3</Link>
                     </div>
                 </div>
+
+                <BotonRegresar  ruta="/" />
             </main>
         </>
     );

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import "./usuario.css";
 import BotonEliminar from "../components/BotonEliminar";
+import BotonRegresar from "../components/BotonRegresar";
 
 export default function Usuario() {
   const [usuarios, setUsuarios] = useState([]);
@@ -71,6 +72,8 @@ export default function Usuario() {
             Agregar usuario
           </Link>
         </div>
+
+        <BotonRegresar  ruta="/" />
       </main>
     </>
   );

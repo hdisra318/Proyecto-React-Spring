@@ -1,6 +1,7 @@
 import Header from "../components/Header";
 import { useState } from "react";
 import { Navigate } from 'react-router-dom';
+import BotonCancelar from "../components/BotonCancelar";
 
 export default function FormularioAgregarIngrediente() {
 
@@ -190,6 +191,7 @@ export default function FormularioAgregarIngrediente() {
                         <button type="submit" className="btn btn-success">Registrar</button>
                     </div>
 
+                    <BotonCancelar  ruta="/inventario" />
                 </form>
             </main>
         

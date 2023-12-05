@@ -1,4 +1,5 @@
 import Header from "../components/Header";
+import BotonRegresar from "../components/BotonRegresar";
 
 import './recetas.css';
 
@@ -154,6 +155,7 @@ export default function Receta({numero}) {
                 
                 {numero === 1 ? <Receta1 /> : (numero === 2 ? <Receta2 /> : <Receta3 />)}
 
+                <BotonRegresar  ruta="/recetas" />
             </main>
         </>
     );

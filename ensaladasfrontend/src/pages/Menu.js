@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import Ensalada from "../components/Ensalada";
 
 import './menu.css';
+import BotonRegresar from "../components/BotonRegresar";
 
 export default function Menu() {
 
@@ -42,6 +43,8 @@ export default function Menu() {
                         en la cocina alemana. Se trata de un plato compuesto principalmente de varios tipos de papas cocidas acompañadas de 
                         diferentes ingredientes." />
                 </div>
+
+                <BotonRegresar  ruta="/" />
             </main>
         </>
     );

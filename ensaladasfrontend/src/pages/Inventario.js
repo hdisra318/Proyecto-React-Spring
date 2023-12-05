@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import BotonRegresar from "../components/BotonRegresar";
 
 import Header from "../components/Header";
 import BotonEliminar from "../components/BotonEliminar";
@@ -86,6 +87,8 @@ export default function Inventario() {
             Agregar ingrediente
           </Link>
         </div>
+
+        <BotonRegresar  ruta="/" />
       </main>
     </>
   );

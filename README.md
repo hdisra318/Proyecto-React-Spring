@@ -9,7 +9,7 @@ Es realizada en React (Frontend) y en Spring (Backend).
 
 ## Requisitos:
 - Tener Docker instalado
-- Tener Node instalado
+- Tener NodeJS instalado
 
 ## Como ejecutar el Proyecto:
 
@@ -72,6 +72,6 @@ npm start
 
 Lo cual nos abrirá el navegador en la dirección "http://localhost:3000/" y nos mostrará la siguiente página:
 
-| ![](capturas/pagina.png)
+| ![](capturas/pagina_inicio.png)
 |:--------------------------------:|
 | Página en el navegador

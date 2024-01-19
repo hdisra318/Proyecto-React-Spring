@@ -1,8 +1,39 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
+  height: 100vh;
 }
 
 h1{
   text-align: center;
+}
+
+.make_bigger {
+  transition: all .3s;
+}
+
+.make_bigger:hover {
+  transform: scale(1.1);
+}
+
+#root {
+  height: 100vh;
+}
+
+@media (min-width: 910px) {
+  .h-90 {
+    height: 90vh;
+  }
+}
+
+.boton {
+  background-color: rgb(9, 141, 9);
+}
+
+.boton:hover {
+  background-color: rgb(4, 108, 4);
+}
+
+.usuario {
+  color: rgb(220, 228, 240);
 }

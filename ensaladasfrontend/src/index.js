@@ -12,6 +12,7 @@ import FormularioEditarUsuario from './pages/FormularioEditarUsuario';
 import Inventario from "./pages/Inventario";
 import FormularioAgregarIngrediente from './pages/FormularioAgregarIngrediente';
 import FormularioEditarIngrediente from './pages/FormularioEditarIngrediente';
+import AcercaDe from './pages/AcercaDe';
 
 // Para manejar las rutas con React para que la carga inicial de la aplicación sea más rapida 
 const router = createBrowserRouter([
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
     path: "/producto/formularioEditarIngrediente/:id_producto",
     element: <FormularioEditarIngrediente />
   },
+  {
+    path: "/acercade",
+    element: <AcercaDe />
+  }
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
